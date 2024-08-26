@@ -31,7 +31,7 @@ class AuthController {
   async login(req: Request, res: Response, next: NextFunction) {
     const { email, password } = req.body;
     if (!email || !password) {
-      return BaseError.BadRequest("Invalid parametrs");
+      return next(BaseError.BadRequest("Invalid parametrs"));
     }
     try {
       const data = await AuthService.login(email, password);
